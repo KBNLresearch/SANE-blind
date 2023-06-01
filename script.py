@@ -8,7 +8,6 @@ def process_input(input_path):
     filepaths = glob(f"{input_path}*.txt")
     frequency_lists = {}
     for filepath in filepaths:
-        print(filepath)
         with open(filepath, "r", encoding="utf-8") as textfile:
             text = textfile.read()
             text = text.lower()
@@ -22,7 +21,6 @@ def output_results(frequency_lists, output_path):
     for filename, frequencies in frequency_lists.items():
         filename = filename.split("\\")[-1].split('/')[-1]
         filename = output_path + filename.replace(".txt", ".csv")
-        print(filename)
         with open(filename, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile, delimiter=",", quoting=csv.QUOTE_NONNUMERIC)
             writer.writerows(frequencies)
