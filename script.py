@@ -5,9 +5,12 @@ import csv
 import collections #bevat ook counter om tokens te tellen (kan ook: from collections import Counter)
 
 def process_input(input_path):
+    if input_path[-1]!= '/':
+        input_path = input_path+'/'
     filepaths = glob(f"{input_path}*.txt")
     frequency_lists = {}
     for filepath in filepaths:
+        print(filepath)
         with open(filepath, "r", encoding="utf-8") as textfile:
             text = textfile.read()
             text = text.lower()
@@ -18,9 +21,12 @@ def process_input(input_path):
     return frequency_lists
 
 def output_results(frequency_lists, output_path):
+    if output_path[-1]!= '/':
+        output_path = output_path+'/'
     for filename, frequencies in frequency_lists.items():
         filename = filename.split("\\")[-1].split('/')[-1]
         filename = output_path + filename.replace(".txt", ".csv")
+        print(filename)
         with open(filename, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile, delimiter=",", quoting=csv.QUOTE_NONNUMERIC)
             writer.writerows(frequencies)
