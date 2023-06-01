@@ -36,5 +36,6 @@ if __name__ == '__main__':
     parser.add_argument('-t', '--temp', help='temp folder', required=True)
 
     args = parser.parse_args()
+    print(f'Going to process {args.input_path} and write results to {args.output_path}')
     frequency_lists = process_input(args.input_path)
     output_results(frequency_lists, args.output_path)
