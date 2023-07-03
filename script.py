@@ -5,9 +5,11 @@ import csv
 import collections #bevat ook counter om tokens te tellen (kan ook: from collections import Counter)
 
 def process_input(input_path):
+    print(f'Processing input from {input_path}')
     if input_path[-1]!= '/':
         input_path = input_path+'/'
     filepaths = glob(f"{input_path}*.txt")
+    print(f"Number of files: {len(filepaths)}")
     frequency_lists = {}
     for filepath in filepaths:
         print(filepath)
